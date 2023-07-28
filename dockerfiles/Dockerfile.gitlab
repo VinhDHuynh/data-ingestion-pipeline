@@ -1,0 +1,8 @@
+# Use the GitLab Community Edition image as the base image
+FROM gitlab/gitlab-ce:latest
+
+# Make sure the package repository is up to date
+RUN apt-get update -y && apt-get upgrade -y
+
+# Run the command to start the runit service in the background
+CMD /opt/gitlab/embedded/bin/runsvdir-start & /assets/wrapper
